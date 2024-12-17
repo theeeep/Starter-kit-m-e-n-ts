@@ -1,0 +1,81 @@
+{
+  "name": "ts-backend-production-template",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "dist": "npx tsc",
+    "dev": "cross-env NODE_ENV=development nodemon src/server.ts",
+    "start": "NODE_ENV=production node dist/server.js",
+    "prepare": "husky",
+    "lint": "biome lint .",
+    "format": "biome format . --write",
+    "check": "biome check . --write",
+    "migrate:dev": "cross-env MIGRATE_MODE=development node script/migration.js",
+    "migrate:prod": "MIGRATE_MODE=production node script/migration.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
+    "test:clear": "jest --clearCache"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "biome check --write"
+    ]
+  },
+  "author": "theeeep",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@jest/types": "^29.6.3",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^22.10.1",
+    "@types/source-map-support": "^0.5.10",
+    "@types/supertest": "^6.0.2",
+    "@types/swagger-ui-express": "^4.1.7",
+    "cross-env": "^7.0.3",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-environment-node": "^29.7.0",
+    "lint-staged": "^15.2.10",
+    "nodemon": "^3.1.7",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@anatine/zod-openapi": "^2.2.6",
+    "@nestjs/swagger": "^8.0.7",
+    "@types/swagger-ui-express": "^4.1.7",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "class-validator-jsonschema": "^5.0.1",
+    "colorette": "^2.0.20",
+    "cors": "^2.8.5",
+    "dotenv-flow": "^4.1.0",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.8.3",
+    "openapi3-ts": "^4.4.0",
+    "rate-limiter-flexible": "^5.0.4",
+    "reflect-metadata": "^0.2.2",
+    "routing-controllers": "^0.10.4",
+    "routing-controllers-openapi": "^4.0.0",
+    "source-map-support": "^0.5.21",
+    "swagger-ui-express": "^5.0.1",
+    "ts-migrate-mongoose": "^3.8.5",
+    "winston": "^3.17.0",
+    "winston-mongodb": "^6.0.0",
+    "zod": "^3.23.8"
+  },
+  "class-transformer": {
+    "ignoreDecorators": true
+  }
+}
